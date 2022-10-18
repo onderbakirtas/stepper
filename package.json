@@ -4,7 +4,8 @@
   "description": "stepper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/onderbakirtas/stepper/issues"
   },
-  "homepage": "https://github.com/onderbakirtas/stepper#readme"
+  "homepage": "https://github.com/onderbakirtas/stepper#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
 }
