@@ -1,13 +1,19 @@
 {
   "name": "@onderbakirtas/stepper",
   "version": "1.0.0",
-  "description": "stepper",
+  "description": "Cool stepper",
   "main": "index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "format": "prettier --ignore-path .gitignore lib --write \"src/**/*.+(ts|js)\"",
-    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js)\""
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js)\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm run format",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -22,6 +28,9 @@
     "url": "https://github.com/onderbakirtas/stepper/issues"
   },
   "homepage": "https://github.com/onderbakirtas/stepper#readme",
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
