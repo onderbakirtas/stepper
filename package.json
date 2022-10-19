@@ -31,6 +31,9 @@
   "files": [
     "lib/**/*"
   ],
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
