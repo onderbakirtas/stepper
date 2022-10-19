@@ -2,10 +2,12 @@
   "name": "@onderbakirtas/stepper",
   "version": "1.0.3",
   "description": "Cool stepper",
+  "type": "module",
   "main": "index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch",
     "build": "tsc",
     "format": "prettier --ignore-path .gitignore lib --write \"src/**/*.+(ts|js)\"",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js)\"",
