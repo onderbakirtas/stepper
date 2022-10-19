@@ -1,5 +1,6 @@
-type TCountdownOptions = {
+export type TCountdownOptions = {
   start: number
+  className?: string
 }
 
 class Countdown {
@@ -10,14 +11,15 @@ class Countdown {
 
   options: TCountdownOptions = {
     start: 0,
+    className: 'cd-element',
   }
 
-  constructor(node: Element, options: TCountdownOptions) {
-    if (!options) {
+  constructor(node: Element, customOptions: TCountdownOptions) {
+    if (!customOptions) {
       throw Error("You need to specify 'options'.")
     }
 
-    if (!options.start) {
+    if (!customOptions.start) {
       throw Error("You need to specify 'start' value.")
     }
 
@@ -25,15 +27,27 @@ class Countdown {
       throw Error('Wrong node.')
     }
 
+    this.options = { ...this.options, ...customOptions }
+
     this._el = node
-    this._timeleft = options.start
-    this.options = { ...this.options, ...options }
-    this._span.innerText = options.start.toString()
+    this._timeleft = customOptions.start
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this._span.classList.add(this.options.className!)
+    this._span.innerText = customOptions.start.toString()
 
     this._el.innerHTML = ''
     this._el.appendChild(this._span)
 
+    this.addStyles()
     this.startTimer()
+  }
+
+  private addStyles() {
+    const styleBlock = document.createElement('style')
+    styleBlock.appendChild(
+      document.createTextNode('.cd-element{color:red;font-size:24px}'),
+    )
+    document.head.appendChild(styleBlock)
   }
 
   startTimer() {
@@ -46,6 +60,13 @@ class Countdown {
         this._span.innerHTML = this._timeleft.toString()
       }
     }, 1000)
+  }
+
+  restart() {
+    this._timeleft = this.options.start
+    this._span.innerText = this._timeleft.toString()
+    clearInterval(this._timer)
+    this.startTimer()
   }
 
   destroy() {
