@@ -1,6 +1,6 @@
 {
   "name": "@onderbakirtas/stepper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Cool stepper",
   "main": "index.js",
   "types": "lib/index.d.ts",
